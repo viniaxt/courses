@@ -1,0 +1,2 @@
+-- open server: cd backend -> yarn dev
+-- open front: cd frontend -> yarn start

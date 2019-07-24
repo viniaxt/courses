@@ -1,0 +1,69 @@
+section#post-link {
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+section#post-link article {
+  background: #fff;
+  border: 1px solid #ddd;
+  margin-top: 30px;
+}
+
+section#post-link article header {
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+section#post-link article header .user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+section#post-link article header .user-info span {
+  font-size: 13px;
+}
+
+section#post-link article header .user-info span.place {
+  font-size: 11px;
+  color: #666;
+  margin-top: 3px;
+}
+
+section#post-link article > img {
+  width: 100%;
+}
+
+section#post-link article footer {
+  padding: 20px;
+}
+
+section#post-link article footer .actions {
+  margin-bottom: 10px;
+}
+
+section#post-link article footer .actions button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+section#post-link article footer .actions img {
+  height: 20px;
+  margin-right: 10px;
+}
+
+section#post-link article footer p {
+  font-size: 13px;
+  margin-top: 2px;
+  line-height: 18px;
+}
+
+section#post-link article footer p span {
+  color: #7159c1;
+  display: block;
+}

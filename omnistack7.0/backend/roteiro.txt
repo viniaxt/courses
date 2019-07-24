@@ -1,0 +1,10 @@
+// backend 
+    * yarn init -y   creates a package.json
+    * yarn add express 
+    * yarn add nodemon
+      - creates scripts -> dev -> nodemon src/index.js
+    * yarn add mongoose   change password in string name
+    * yarn add multer
+    * yarn add sharp
+    * yarn add cors
+    * yarn add socket.io
