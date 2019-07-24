@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.scoreboard {
+  display: flex;
+  height: 20vh;
+}
+
+.round {
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+  font-size: 60px;
+  align-self: center;
+}
+
+.player {
+  width: 25%;
+  text-align: center;
+  font-size: 40px;
+  align-self: center;
+}
+
+.cards {
+  display: flex;
+  height: 20vh;
+}
+
+.card {
+  width: 100%;
+  border-radius: 7px;
+  margin: 5px;
+  background-color: #5f5477;
+  cursor: pointer;
+  transition: background-color 1s;
+}
+
+.card.actived.red,
+.card.fixed.red {
+  background-color: #e74c3c;
+}
+
+.card.actived.green,
+.card.fixed.green {
+  background-color: #3ce763;
+}
+
+.card.actived.orange,
+.card.fixed.orange {
+  background-color: #e7753c;
+}
+
+.card.actived.blue,
+.card.fixed.blue {
+  background-color: #3c6ce7;
+}
+
+.card.actived.pink,
+.card.fixed.pink {
+  background-color: #e43ce7;
+}
+
+.card.actived.yellow,
+.card.fixed.yellow {
+  background-color: #e7e13c;
+}
+
+.card.actived.violet,
+.card.fixed.violet {
+  background-color: #833ce7;
+}
+
+.card.actived.cyan,
+.card.fixed.cyan {
+  background-color: #3cd8e7;
+}
+
+.card.actived.grey,
+.card.fixed.grey {
+  background-color: #cccccc;
+}
+
+.card.actived.black,
+.card.fixed.black {
+  background-color: #494747;
+}

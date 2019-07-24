@@ -1,0 +1,108 @@
+<div wm-slider>
+
+  <p>
+    <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="Muro da cidade" width="513" heigth="342"
+      title="Muro da cidade por Tarso Bessa">
+  </p>
+
+  <p>
+    <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Intro cod3r" height="342" title="Introducao cod3r">
+  </p>
+
+  <p class="circular">
+    <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Rio de janeiro" height="342">
+  </p>
+
+  <p class="texto">
+    <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="avatar" height="50" align="left">
+    ksfksdjflskdfkksjfljslkdjkfjklsjldkjfkljkljsldjfkjksl jkjkljd kfj kljkdljf lksjk
+    lksdjf lksjd flskjl kjlkdj lsdjflsjkdjfk sjkljdkl fslj lkjk jkljsl kjfl sjfls jdkfl
+    slkdf lskdjf lskdj flksjfl jlj lsjf lskdjfljpsoejpojfpso jdk k jlk jslkj fposeo jf
+    s;ldkf sdjfsjflksjlksjdlk fjsklj djfsjfdl jsjk fldjf lksjfk
+  </p>
+  <p class="cidade"></p>
+
+  <p>
+    <picture>
+      <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png" media="(min-width: 600px)">
+      <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="">
+    </picture>
+  </p>
+
+  <style>
+    .circular {
+      width: 513px;
+      background-color: #444444;
+    }
+
+    .texto {
+      width: 400px;
+    }
+
+    .texto img {
+      margin-right: 10px;
+    }
+
+    .cidade {
+      width: 513px;
+      height: 342px;
+      background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+
+    p {
+      position: absolute;
+      display: none;
+    }
+  </style>
+
+</div>
+
+<script>
+
+  // para um objeto, o codigo é mais simples
+  // const p = document.querySelector('[wm-slider] > p') //pegar a primeira tag p
+  // p.style.display = 'block'
+  // mover(p, 1500, -520, 5, () => {
+  //   console.log('<h1>Terminou</h1>')
+  // })
+
+  function slider() {
+    const elementos = document.querySelectorAll('[wm-slider] > p')
+    const slides = Array.from(elementos)
+    exibirSlide(slides, slides[0])
+  }
+
+  function exibirSlide(slides, slide) {
+    slide.style.display = 'block'
+
+    const inicio = innerWidth
+    const fim = -slide.clientWidth
+
+    slide.style.left = `${inicio}px`
+    mover(slide, inicio, fim, 5, () => {
+      slide.style.display = 'none'
+      exibirSlide(slides, getProximo(slides, slide))
+    })
+  }
+
+  function mover(elmnt, inicio, fim, passo, callback) {
+    const novoInicio = inicio - passo
+    if (novoInicio >= fim) {
+      elmnt.style.left = novoInicio + 'px'
+      setTimeout(() => mover(elmnt, novoInicio, fim, passo, callback), 7)
+    } else {
+      callback()
+    }
+  }
+
+  function getProximo(lista, atual) {
+    const i = lista.indexOf(atual) + 1
+    return i < lista.length ? lista[i] : lista[0]
+  }
+
+  slider()
+
+</script>

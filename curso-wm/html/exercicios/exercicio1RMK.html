@@ -1,0 +1,102 @@
+<div slidin>
+  <p class="zero">
+    <img id="img0" src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="Muro da cidade" width="256" height="171">
+  </p>
+
+  <p class="um">
+    <img id="img1" src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Intro cod3r" width="514" height="342">
+
+  </p>
+
+  <p class="dois">
+    <img id="img2" src="http://files.cod3r.com.br/curso-web/imagem4.jpg" width="256" height="171">
+
+  </p>
+</div>
+
+<div>
+  <button class="butto" onclick=esquerda()>ESQUERDA</button>
+  <button class="butto" onclick=direita()>DIREITA</button>
+
+</div>
+
+
+<style>
+  .zero {
+    width: 256px;
+    height: 171px;
+    filter: blur(2px)
+  }
+
+  .um {
+    width: 513px;
+    height: 342px;
+  }
+
+  .dois {
+    width: 256px;
+    height: 171px;
+    filter: blur(2px);
+  }
+
+  .butto {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin-left: 240px;
+    cursor: pointer;
+    background-size: 200px;
+  }
+
+  .butto:hover {
+    background-color: grey
+  }
+
+  p {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline;
+  }
+</style>
+
+<script>
+  function esquerda() {
+    if (document.getElementById('img0').src == "http://files.cod3r.com.br/curso-web/imagem1.jpg") {
+      document.getElementById('img0').src = "http://files.cod3r.com.br/curso-web/imagem2.gif"
+      document.getElementById('img1').src = "http://files.cod3r.com.br/curso-web/imagem4.jpg"
+      document.getElementById('img2').src = "http://files.cod3r.com.br/curso-web/imagem1.jpg"
+    } else if (document.getElementById('img0').src == "http://files.cod3r.com.br/curso-web/imagem2.gif") {
+      document.getElementById('img0').src = "http://files.cod3r.com.br/curso-web/imagem4.jpg"
+      document.getElementById('img1').src = "http://files.cod3r.com.br/curso-web/imagem1.jpg"
+      document.getElementById('img2').src = "http://files.cod3r.com.br/curso-web/imagem2.gif"
+    } else if (document.getElementById('img0').src == "http://files.cod3r.com.br/curso-web/imagem4.jpg") {
+      document.getElementById('img0').src = "http://files.cod3r.com.br/curso-web/imagem1.jpg"
+      document.getElementById('img1').src = "http://files.cod3r.com.br/curso-web/imagem2.gif"
+      document.getElementById('img2').src = "http://files.cod3r.com.br/curso-web/imagem4.jpg"
+    }
+  }
+
+
+  function direita() {
+    if (document.getElementById('img0').src == "http://files.cod3r.com.br/curso-web/imagem2.gif") {
+      document.getElementById('img0').src = "http://files.cod3r.com.br/curso-web/imagem1.jpg"
+      document.getElementById('img1').src = "http://files.cod3r.com.br/curso-web/imagem2.gif"
+      document.getElementById('img2').src = "http://files.cod3r.com.br/curso-web/imagem4.jpg"
+    } else if (document.getElementById('img0').src == "http://files.cod3r.com.br/curso-web/imagem4.jpg") {
+      document.getElementById('img0').src = "http://files.cod3r.com.br/curso-web/imagem2.gif"
+      document.getElementById('img1').src = "http://files.cod3r.com.br/curso-web/imagem4.jpg"
+      document.getElementById('img2').src = "http://files.cod3r.com.br/curso-web/imagem1.jpg"
+    } else if (document.getElementById('img0').src == "http://files.cod3r.com.br/curso-web/imagem1.jpg") {
+      document.getElementById('img0').src = "http://files.cod3r.com.br/curso-web/imagem4.jpg"
+      document.getElementById('img1').src = "http://files.cod3r.com.br/curso-web/imagem1.jpg"
+      document.getElementById('img2').src = "http://files.cod3r.com.br/curso-web/imagem2.gif"
+    }
+  }
+
+
+</script>

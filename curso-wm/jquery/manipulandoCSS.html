@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Manipulando CSS</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Manipulando CSS</h1>
+    <div id='div1'>1</div>
+    <div id='div2'>2</div>
+    <div id='div3'>3</div>
+    <div id='resultado'></div>
+    <script>
+        const fonte = $('#div1').css('font-family')
+        $('#resultado').append(`Fonte é ${fonte}`)
+
+        $('#div1').css('font-size', '3em') //passa o nome e o valor para alterar o atributo
+        $('#div1').css({ 'font-size': '3.5e,', 'color': 'yellow' })
+        $('#div1').css('font-size', function () {
+            return `${2 * 2}em`
+        })
+
+        $('#div2').addClass('destaque')
+
+        const TemClasse = $('#div2').hasClass('destaque') //hasCLass diz se um determinado elemento tem classe ou nao
+        $('#resultado').append(`<br>tem class? ${temClasse}`)
+
+        $('#div2').removeClass('destaque')
+        $('#div2').toggleClass('destaque') // se a classe existir, ele retira
+        $('#div2').toggleClass('destaque') // se a classe nao existir, ele adicina
+    </script>
+</body>

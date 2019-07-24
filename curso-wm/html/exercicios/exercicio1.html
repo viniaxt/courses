@@ -1,0 +1,167 @@
+<div slidin>
+  <p class="zero">
+    <img id="img0" src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="Muro da cidade" width="256" height="171">
+  </p>
+      
+ <p class="um">
+    <img id="img1" src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Intro cod3r" width="514" height="342"> 
+  </p>    
+  <p class="dois">
+    <img id="img2" src="http://files.cod3r.com.br/curso-web/imagem4.jpg" width="256" height="171">     
+  </p>
+</div>
+      
+<div>
+  <button class="butto" onclick="functionEsquerda()" >ESQUERDA</button>
+  <button class="butto" onclick="functionDireita()">DIREITA</button>
+</div>
+
+
+
+<style>
+  .zero {
+    width: 256px;
+    height: 171px;
+    filter: blur(2px)
+  }
+
+  .um {
+    width: 513px;
+    height: 342px;
+  }
+
+  .dois {
+    width: 256px;
+    height: 171px;
+    filter: blur(2px);
+  }
+
+  .butto {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin-left: 240px;
+  cursor: pointer;
+  background-size: 200px;  
+  }
+
+  .butto:hover {
+    background-color: grey
+  }
+  
+  p {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline;
+  }
+</style>
+
+<script>
+
+  // PARA A DIREITA:
+  function functionDireita() {
+    var lugar0 = document.getElementsByClassName('zero')
+    var lugar1 = document.getElementsByClassName('um')
+    var lugar2 = document.getElementsByClassName('dois')
+    var lugares = [lugar0, lugar1, lugar2]
+  
+    const foto0 = document.getElementById('img0')
+    const foto1 = document.getElementById('img1')
+    const foto2 = document.getElementById('img2')
+    var fotos = [foto0, foto1, foto2]
+  
+    sumirFotosDireita(fotos)
+  }
+  
+  function sumirFotosDireita(fotos) {
+    fotos.style.display = 'none'
+    moverDireita(fotos)
+  }
+  
+  function moverDireita(lugares, elementos, lugar0, lugar1, lugar2) {
+    if (lugares[0] == lugar0) {
+      lugares[0] = lugar2
+      lugares[1] = lugar0
+      lugares[2] = lugar1
+      elementos = [foto2, foto0, foto1]
+    }
+  
+    if (lugares[0] == lugar1) {
+      lugares[0] = lugar1
+      lugares[1] = lugar2
+      lugares[2] = lugar0
+      elementos = [foto1, foto2, foto0]
+    }
+  
+    if (lugares[0] == lugar2) {
+      lugares[0] = lugar0
+      lugares[1] = lugar1
+      lugares[2] = lugar2
+      elementos = [foto0, fot01, foto2]
+    }
+    return(elementos, lugares)
+    mostrarFotos(fotos)
+  }
+  
+  
+  // PARA AMBOS
+  function mostrarFotos(fotos) {
+    fotos.style.display = 'block'
+  }
+  
+  function newConfig(elementos, lugares) {
+  
+  }
+  
+  // PARA A ESQUERDA
+  function functionEsquerda() {
+  
+    var lugar0 = document.getElementsByClassName('zero')
+    var lugar1 = document.getElementsByClassName('um')
+    var lugar2 = document.getElementsByClassName('dois')
+    elementoLugar = document.querySelectorAll('[slidin] > p')
+    var lugares = Array.from(elementoLugar)
+  
+    const foto0 = document.getElementById('img0')
+    const foto1 = document.getElementById('img1')
+    const foto2 = document.getElementById('img2')
+    var elementoFoto = [foto0, foto1, foto2]
+    sumirFotosEsquerda(fotos)       
+  }
+
+  function sumirFotosEsquerda(fotos) {
+    fotos.style.display = 'none'
+    moverEsquerda(fotos) 
+  }
+  
+  function moverEsquerda(lugares, elementos, lugar0, lugar1, lugar2) {
+    if (lugares[0] == lugar0) {
+      lugares[0] = lugar1
+      lugares[1] = lugar2
+      lugares[2] = lugar0
+      newConfig()
+    }
+  
+    if (lugares[0] == lugar1) {
+      lugares[0] = lugar2
+      lugares[1] = lugar0
+      lugares[2] = lugar1
+      elementos = [foto1, foto2, foto0]
+    }
+  
+    if (lugares[0] == lugar2) {
+      lugares[0] = lugar0
+      lugares[1] = lugar1
+      lugares[2] = lugar2
+      elementos = [foto0, fot01, foto2]
+    }
+    return(elementos, lugares)
+    mostrarFotos(fotos)
+  } 
+  
+  </script>

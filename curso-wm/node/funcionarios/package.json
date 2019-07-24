@@ -1,0 +1,22 @@
+{
+  "name": "funcionarios",
+  "version": "1.0.0",
+  "description": "adsd",
+  "main": "funcionarios.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "echo \"Error: no test especified\" && exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "asdad"
+  },
+  "keywords": [
+    "gsd"
+  ],
+  "author": "fdsfs",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}

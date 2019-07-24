@@ -1,0 +1,158 @@
+BACKEND
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Benner.WMS.Movel.Services;
+using Benner.WMS.Movel.Servicos.Interfaces;
+using Prism.Navigation;
+using Xamarin.Forms;
+
+namespace Benner.WMS.Movel.ViewModels
+{
+    public class ConfiguracaoServidorPageViewModel : NavigationViewModel
+    {
+        private readonly IAlertaServico _alertaServico;
+        private readonly IProvedorRecurso _provedorRecurso;
+        private readonly IHttpServico _httpServico;
+
+        public ConfiguracaoServidorPageViewModel(
+            INavigationService navigationService,
+            IAlertaServico alertaServico,
+            IProvedorRecurso provedorRecurso,
+            IHttpServico httpServico)
+            : base(navigationService, false)
+        {
+            _alertaServico = alertaServico;
+            _provedorRecurso = provedorRecurso;
+            _httpServico = httpServico;
+            if (Application.Current.Properties.ContainsKey("Urls.Base"))
+            {
+                Caminho = Application.Current.Properties["Urls.Base"] as string;
+            }
+        }
+
+        public override string title => "Configuração de servidor";
+
+        public string Senha { get; set; }
+        public bool IsLoading { get; set; }
+        public string Caminho { get; set; }
+        public bool HabilitarCaminho { get; set; }
+        public bool SalvandoCaminho { get; set; }
+        public bool ExibirDesbloquear => !HabilitarCaminho;
+        public bool ExibirSalvar => !SalvandoCaminho;
+        public ICommand DesbloquearComando => new Command(DesbloquearCaminho);
+        public ICommand SalvarComando => new Command(SalvarCaminho);
+
+        private void SalvarCaminho(object obj) => Task.Run(SalvarCaminhoAsync);
+
+        private void DesbloquearCaminho()
+        {
+            var senhaPadrao = _provedorRecurso.Obter("ConfiguracaoServidor.Senha");
+
+            if (Senha == senhaPadrao)
+            {
+                HabilitarCaminho = true;
+            }
+            else
+            {
+                var titulo = "Senha Incorreta";
+                var mensagem = "Favor entrar em contato com seu supervisor para adquirir a senha correta";
+                var acao = "Confirmar";
+                _alertaServico.Exibir(titulo, mensagem, acao);
+            }
+
+        }
+
+        private async Task SalvarCaminhoAsync()
+        {
+            SalvandoCaminho = true;
+            IsLoading = true;
+            string caminho;
+
+            if (Caminho.Contains("http://"))
+            {
+                 caminho = Caminho + "/";
+            }
+            else
+            {
+                 caminho = "http://" + Caminho + "/";
+            }
+
+            try
+            {
+                var uri = new Uri(new Uri(caminho) + "/Login");
+                var resultado = await _httpServico.SendAsync(new HttpRequestMessage(HttpMethod.Get, uri));
+                if (!resultado.IsSuccessStatusCode)
+                {
+                    await _alertaServico.Exibir("Erro", "Não foi possível salvar o caminho do servidor, sem sucesso ao se comunicar com o mesmo.", "OK");
+                    SalvandoCaminho = false;
+                }
+                else
+                {
+                    Application.Current.Properties["Urls.Base"] = caminho;
+                    await _alertaServico.Exibir("Sucesso", "O caminho do servidor foi salvo com sucesso", "OK");
+                    SalvandoCaminho = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                await _alertaServico.Exibir("Erro", "Não foi possível salvar o caminho do servidor, sem sucesso ao se comunicar com o mesmo.", "OK");
+                SalvandoCaminho = false;
+            }
+            IsLoading = false;
+        }
+    }
+}
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+FRONTEND
+
+
+
+
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Benner.WMS.Movel.Views.ConfiguracaoServidorPage"
+             ControlTemplate="{StaticResource NavigationTemplate}">
+    <ContentPage.Resources>
+        <Style TargetType="Label" BaseResourceKey="Label"/>
+        <Style TargetType="Button" BaseResourceKey="PrimaryButton" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <StackLayout Padding="5,5,5,5">
+            <StackLayout VerticalOptions="StartAndExpand">
+                <StackLayout>
+                    <Label Text="Senha de bloqueio"/>
+                    <Entry IsPassword="True"
+                           Text="{Binding Senha}"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Caminho do servidor" />
+                    <Entry Placeholder="Ex: servidor/wms"
+                           IsEnabled="{Binding HabilitarCaminho}"
+                           Text="{Binding Caminho}"/>
+                </StackLayout>
+            </StackLayout>
+            <ActivityIndicator
+                 IsRunning="{Binding IsLoading}"
+                 IsVisible="{Binding IsLoading}"
+                 Color="{StaticResource Red}"/>
+            <Button Text="Desbloquear" BackgroundColor="{StaticResource Red}"
+                    Command="{Binding DesbloquearComando}"
+                    IsVisible="{Binding ExibirDesbloquear}"/>
+            <Button Text="Salvar"
+                    Command="{Binding SalvarComando}"
+                    IsVisible="{Binding ExibirSalvar}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

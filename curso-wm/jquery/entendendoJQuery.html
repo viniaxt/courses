@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Entendendo jQuery</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/jquery.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Entendendo jQuery</h1>
+    <div>1</div>
+    <div>2</div>
+
+    <script>
+        $('div').hide(5000).show(5000).fadeOut(5000)  //seleciona todas as div
+        console.log($('div').get(0)) //jquery proporciona enorme facilidade no manipulamento da dom
+        console.log($.isEmptyObject({ nome: null })) //verifica se o objeto esta ou nao vazio
+        console.log(jQuery.inArray(3, [1, 2, 3]))  //retorna o indice do array
+
+        $.fn.fundoVerde = function () {
+            this.css('background-color', 'green')
+            return this
+        }
+
+        $('body').fundoVerde().fadeOut(1000)
+    </script>
+</body>

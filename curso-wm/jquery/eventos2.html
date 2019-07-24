@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #02</h1>
+    <div id='div1'>1</div>
+    <div id="resultado1">?</div>
+    <br>
+    <input type="text" placeholder="Digite e Selecione">
+    <div id="resultado2">?</div>
+    <script>
+        const alternarDestaque = () => $('#div1').toggleClass('destaque')
+        $('#div1').hover(alternarDestaque, alternarDestaque)
+        // pode chamar 2 funcs a partir do hover, uma quando entra e outra quando sai
+
+        $('#div1').one('mouseenter', e => alert('Aviso importante!!'))
+        // realiza um evento apenas 1 vez
+        $('#div1').dblclick(e => $('#div1').fadeOut(1000).fadeIn(1000))
+
+        $(window).resize(function (e) { //resize da pagina
+            const l = $(window).width()
+            const h = $(window).height()
+            $('#resultado1').html(`Largura: ${l} e altura: ${h}`)
+        })
+
+        $(':input').select(e => {
+            const inicio = e.target.selectionStart
+            const fim = e.target.selectionEnd
+            $('#resultado2').html(e.target.value.substring(inicio, fim))
+        })
+    </script>
+</body>

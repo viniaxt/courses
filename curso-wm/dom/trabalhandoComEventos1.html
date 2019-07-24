@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <a href="https://google.com.br" onclick="navegarEm5s(event)">Google</a>
+    </div>
+    <script>
+        function navegarEm5s(e) {
+            e.preventDefault()
+            console.log('saindo em 5s...')
+            setTimeout(() => {
+                const link = e.target
+                //target: elemento html que disparou o evento
+                //window.location esta levando ao href
+                window.location.href = link.href
+            }, 5000)
+        }
+
+        // menos legivel(retirar o onclick)
+        // const a = document.querySelector('a')
+        // a.onclick = navegarEm5s
+
+
+    </script>
+</body>
