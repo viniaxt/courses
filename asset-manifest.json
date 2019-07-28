@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/courses/monsters/static/css/main.f9c5ab5c.chunk.css",
-    "main.js": "/courses/monsters/static/js/main.c7189ab3.chunk.js",
-    "main.js.map": "/courses/monsters/static/js/main.c7189ab3.chunk.js.map",
-    "runtime~main.js": "/courses/monsters/static/js/runtime~main.71dddf14.js",
-    "runtime~main.js.map": "/courses/monsters/static/js/runtime~main.71dddf14.js.map",
-    "static/js/2.65aa1cca.chunk.js": "/courses/monsters/static/js/2.65aa1cca.chunk.js",
-    "static/js/2.65aa1cca.chunk.js.map": "/courses/monsters/static/js/2.65aa1cca.chunk.js.map",
-    "index.html": "/courses/monsters/index.html",
-    "precache-manifest.f9f575d46c8fbbbaf7013d3291d86a66.js": "/courses/monsters/precache-manifest.f9f575d46c8fbbbaf7013d3291d86a66.js",
-    "service-worker.js": "/courses/monsters/service-worker.js",
-    "static/css/main.f9c5ab5c.chunk.css.map": "/courses/monsters/static/css/main.f9c5ab5c.chunk.css.map"
+    "main.css": "/courses/react-developer/monsters/static/css/main.f9c5ab5c.chunk.css",
+    "main.js": "/courses/react-developer/monsters/static/js/main.341f9224.chunk.js",
+    "main.js.map": "/courses/react-developer/monsters/static/js/main.341f9224.chunk.js.map",
+    "runtime~main.js": "/courses/react-developer/monsters/static/js/runtime~main.c50f0aba.js",
+    "runtime~main.js.map": "/courses/react-developer/monsters/static/js/runtime~main.c50f0aba.js.map",
+    "static/js/2.65aa1cca.chunk.js": "/courses/react-developer/monsters/static/js/2.65aa1cca.chunk.js",
+    "static/js/2.65aa1cca.chunk.js.map": "/courses/react-developer/monsters/static/js/2.65aa1cca.chunk.js.map",
+    "index.html": "/courses/react-developer/monsters/index.html",
+    "precache-manifest.ce524aa0292aeaef80797b00a61f00cd.js": "/courses/react-developer/monsters/precache-manifest.ce524aa0292aeaef80797b00a61f00cd.js",
+    "service-worker.js": "/courses/react-developer/monsters/service-worker.js",
+    "static/css/main.f9c5ab5c.chunk.css.map": "/courses/react-developer/monsters/static/css/main.f9c5ab5c.chunk.css.map"
   }
 }
