@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">React not rendered</div>
+    <script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
+    <script>
+      class App extends React.Component {
+        render() {
+          return React.createElement("div", {}, [
+            React.createElement("h1", {}, "React is rendered!"),
+            React.createElement(Person, {
+              name: "Vinicius",
+              occupation: "Developer"
+            })
+          ])
+        }
+      }
+
+      const Person = props => {
+        return React.createElement("div", {}, [
+          React.createElement("h1", {}, props.name),
+          React.createElement("p", {}, props.occupation)
+        ])
+      }
+
+      ReactDOM.render(
+        // what we want to render
+        React.createElement(App),
+        // html that we want to insert
+        document.getElementById("root")
+      )
+    </script>
+  </body>
+</html>
