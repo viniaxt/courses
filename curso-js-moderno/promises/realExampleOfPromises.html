@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      promises example
+    </title>
+  </head>
+  <body></body>
+  <script>
+
+    var posts = fetch('https://willianjusten.com.br/search.json')
+    console.log(posts) // pending
+
+    setTimeout(() => {
+      console.log(posts) // resolved
+    }, 3000)
+
+    posts
+      .then(data => data.json())
+      .then(data => data.map(post => {
+        console.log(post.title)
+      }))
+      .catch(err => console.error(err))
+
+  </script>
+</html>

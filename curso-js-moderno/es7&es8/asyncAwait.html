@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      async/await example
+    </title>
+  </head>
+  <body></body>
+  <script>
+
+  /**
+   * - Async/await only works for promises protocols
+   * 
+   * - Async is a key word before function word ( asyncc function )
+   * 
+   * - Await is used to alert function that it's time to wait 
+   *   promise's results
+   * 
+   * - Await can only be used with async functions
+   * 
+   * - Advantages of using async/await  
+   *    - cleaner code
+   *    - easier to debug
+   *    - easier conversion to promise
+   *    - code with less chains
+   * 
+   * */
+
+  async function getPosts() {
+
+    try {
+      const response = await fetch('https://willianjusten.com.br/search.json')
+  
+      const data = await response.json()
+  
+      data.map(post => {
+        console.log(post.title)
+      })
+    } catch (err) {
+      console.error(`Noooooooooo => ${err}`)
+    }
+
+    /**
+     * 
+     * fetch('https://willianjusten.com.br/search.json')
+     *  .then(data => data.json())
+     *  .then(data => data.map(post => {
+     *    console.log(post.title)
+     *  }))
+     * 
+     * */
+  }
+
+  getPosts()
+
+  </script>
+</html>
