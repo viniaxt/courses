@@ -32,6 +32,6 @@ function Welcome(props) {
 - Faster
 - Can access state through props only!
 
-**HIGH ORDER COMPONENTS**
+**HIGH ORDER COMPONENTS (HOC)**
 
 - A function that takes a component as an argument and returns you a modified component
